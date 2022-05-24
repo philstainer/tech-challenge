@@ -4,7 +4,10 @@ const eventsServive = require('../../services/events/EventsService');
 const router = new Router();
 
 router.get("/", async (_req, res) => {
-  const events = await eventsServive.getAll();
+  const sortField = _req.query?.sortField
+
+  const events = await eventsServive.getAll(sortField);
+
   res.json({ events });
 });
 

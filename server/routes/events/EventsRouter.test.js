@@ -97,7 +97,7 @@ describe('EventRouter', () => {
       expect(body).toEqual({ events: expectedEvents });
 
       const { events: returnedEvents } = body;
-      expect(returnedEvents).toEqual(expectedEvents[0]);
+      expect(returnedEvents).toEqual(expectedEvents);
 
     });
 
@@ -107,7 +107,7 @@ describe('EventRouter', () => {
 
       const expectedEventsOrder = [ events[2].id, events[1].id, events[0].id];
 
-      const { status, body } = await request(app).get("/api/events");
+      const { status, body } = await request(app).get("/api/events?sortField=createdDateTime");
 
       expect(status).toEqual(200);
 
